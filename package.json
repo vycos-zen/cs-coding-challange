@@ -1,0 +1,21 @@
+{
+  "name": "cs-coding-challange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc -b --verbose",
+    "start": "npm run build && node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peterkollerlv/cs-coding-challange.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peterkollerlv/cs-coding-challange/issues"
+  },
+  "homepage": "https://github.com/peterkollerlv/cs-coding-challange#readme"
+}
