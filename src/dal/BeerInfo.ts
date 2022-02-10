@@ -21,10 +21,22 @@ const groupBeersByBrand = (beers: Array<Beer>) => {
   }, []);
 };
 
+const filterBeersByType = (type: string, beers: Beer[]) => {
+  return beers
+    .filter((beer) => beer.type === type)
+    .map((beer) => {
+      return beer.id;
+    });
+};
+
 export const getFullBeerData = async () => {
   return await fetchData();
 };
 
 export const getBeersByBrand = async () => {
   return groupBeersByBrand(await getFullBeerData());
+};
+
+export const getBeerIdsByType = async (type: string) => {
+  return filterBeersByType(type, await getFullBeerData());
 };
