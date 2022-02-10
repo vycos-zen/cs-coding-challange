@@ -14,8 +14,8 @@ const groupBeersByBrand = (beers: Array<Beer>) => {
     );
 
     !brand
-      ? prev.push({ brand: currentBeer["brand"], beers: [currentBeer.name] })
-      : brand.beers?.push(currentBeer.name);
+      ? prev.push({ brand: currentBeer.brand, beers: [currentBeer.id] })
+      : brand.beers?.push(currentBeer.id);
 
     return prev;
   }, []);

@@ -4,7 +4,7 @@ console.log("ready, set, initiate!");
 
 const getBeerQueries = async () => {
   const beersByBrand = await getBeersByBrand();
-  console.log(beersByBrand);
+  console.log(JSON.stringify(beersByBrand));
 };
 
 getBeerQueries();
