@@ -81,9 +81,40 @@ const beerIdsWithExludedIngiridents = (
     .filter((beer) =>
       beer.ingredients.some(
         (ingredient) =>
+          //assuming all beer ingredient list have the excluded ingredient with ratio of 0
           ingredient.name === infredientToExclude && +ingredient.ratio === 0
       )
     )
+    .map((beer) => {
+      return beer.id;
+    });
+};
+
+const getWaterRatioOfBeer = (beer: Beer) => {
+  const waterRatio = beer.ingredients.reduce((prev, current) => {
+    prev += +current.ratio;
+    return prev;
+  }, 0);
+  return 1 - waterRatio;
+};
+
+const descendingOrderedBeersbyWaterRatio = (beers: Beer[]) => {
+  return beers
+    .sort((beerA, beerB) => {
+      const beerARatio = getWaterRatioOfBeer(beerA);
+      const beerBRatio = getWaterRatioOfBeer(beerB);
+      let compareResult = beerARatio - beerBRatio;
+      if (compareResult === 0) {
+        if (beerA.name < beerB.name) {
+          compareResult = 1;
+        }
+        if (beerA.name > beerB.name) {
+          compareResult = -1;
+        }
+      }
+      return compareResult;
+    })
+    .reverse()
     .map((beer) => {
       return beer.id;
     });
@@ -107,4 +138,8 @@ export const getCheepestBeer = async () => {
 
 export const getIngridientExcludedBeerIds = async (ingredient: string) => {
   return beerIdsWithExludedIngiridents(ingredient, await getFullBeerData());
+};
+
+export const getBeersDescendingByWaterRatio = async () => {
+  return descendingOrderedBeersbyWaterRatio(await getFullBeerData());
 };

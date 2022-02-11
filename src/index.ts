@@ -1,6 +1,7 @@
 import {
   getBeerIdsByType,
   getBeersByBrand,
+  getBeersDescendingByWaterRatio,
   getCheepestBeer,
   getIngridientExcludedBeerIds,
 } from "./dal/BeerInfo";
@@ -14,8 +15,12 @@ const getBeerQueries = async () => {
   //console.log(JSON.stringify(beerIdsByType));
   const cheepestBeer = await getCheepestBeer();
   //console.log(JSON.stringify(cheepestBeer));
-  const ingridientExcludedBeerIds = await getIngridientExcludedBeerIds("corn");
-  console.log(JSON.stringify(ingridientExcludedBeerIds));
+  const ingridientExcludedBeerIds = await getIngridientExcludedBeerIds(
+    "barley"
+  );
+  //console.log(JSON.stringify(ingridientExcludedBeerIds));
+  const beersDescendingByWaterRatio = await getBeersDescendingByWaterRatio();
+  console.log(JSON.stringify(beersDescendingByWaterRatio));
 };
 
 getBeerQueries();
