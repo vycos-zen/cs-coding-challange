@@ -4,6 +4,7 @@ import {
   getBeersDescendingByWaterRatio,
   getCheepestBeer,
   getIngridientExcludedBeerIds,
+  getOrderedBeerMapByNearestHundred,
 } from "./dal/BeerInfo";
 
 console.log("ready, set, initiate!");
@@ -20,7 +21,10 @@ const getBeerQueries = async () => {
   );
   //console.log(JSON.stringify(ingridientExcludedBeerIds));
   const beersDescendingByWaterRatio = await getBeersDescendingByWaterRatio();
-  console.log(JSON.stringify(beersDescendingByWaterRatio));
+  //console.log(JSON.stringify(beersDescendingByWaterRatio));
+
+  const orderedByNearestHundred = await getOrderedBeerMapByNearestHundred();
+  console.log(JSON.stringify(Object.fromEntries(orderedByNearestHundred)));
 };
 
 getBeerQueries();

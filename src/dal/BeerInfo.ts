@@ -120,26 +120,42 @@ const descendingOrderedBeersbyWaterRatio = (beers: Beer[]) => {
     });
 };
 
-export const getFullBeerData = async () => {
+const orderedMapByNearesHundred = (beers: Beer[]) => {
+  const beerMap = new Map<string, string[]>();
+
+  beers.map((beer) => {
+    const beerPrice = (Math.ceil(+beer.price / 100) * 100).toString();
+    const beerIds = beerMap.get(beerPrice) ?? [];
+    beerMap.set(beerPrice, [...beerIds, beer.id]);
+  });
+
+  return [...beerMap];
+};
+
+export const getSourceBeerData = async () => {
   return await fetchData();
 };
 
 export const getBeersByBrand = async () => {
-  return groupBeersByBrand(await getFullBeerData());
+  return groupBeersByBrand(await getSourceBeerData());
 };
 
 export const getBeerIdsByType = async (type: string) => {
-  return filterBeersByType(type, await getFullBeerData());
+  return filterBeersByType(type, await getSourceBeerData());
 };
 
 export const getCheepestBeer = async () => {
-  return findCheepestBeerBrand(await getFullBeerData());
+  return findCheepestBeerBrand(await getSourceBeerData());
 };
 
 export const getIngridientExcludedBeerIds = async (ingredient: string) => {
-  return beerIdsWithExludedIngiridents(ingredient, await getFullBeerData());
+  return beerIdsWithExludedIngiridents(ingredient, await getSourceBeerData());
 };
 
 export const getBeersDescendingByWaterRatio = async () => {
-  return descendingOrderedBeersbyWaterRatio(await getFullBeerData());
+  return descendingOrderedBeersbyWaterRatio(await getSourceBeerData());
+};
+
+export const getOrderedBeerMapByNearestHundred = async () => {
+  return orderedMapByNearesHundred(await getSourceBeerData());
 };
