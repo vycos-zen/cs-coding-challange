@@ -1,0 +1,83 @@
+.container {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 60vw;
+}
+
+.foodcard {
+  padding: 1em;
+  margin: 1em;
+  min-width: 15em;
+  background-color: var(--base-color);
+  input {
+    color: var(--secondary-color);
+    border-bottom: var(--secondary-color);
+  }
+  h5 {
+    color: var(--secondary-color);
+  }
+  label {
+    color: var(--secondary-color) !important;
+  }
+}
+
+.addfood {
+  margin: 1em;
+  margin-left: -4.7em;
+  text-align: center;
+  svg {
+    padding-top: 0.2em;
+    fill: var(--base-color);
+    width: 2.5em;
+    height: 2.5em;
+  }
+}
+
+.submitfood {
+  svg {
+    padding-top: 0.2em;
+    fill: var(--secondary-color);
+    width: 2em;
+    height: 2em;
+  }
+}
+
+.deletefood {
+  svg {
+    fill: var(--warning-color);
+    width: 1.2em;
+    height: 1.2em;
+  }
+}
+
+.updatefood {
+  svg {
+    fill: var(--secondary-color);
+    width: 1.2em;
+    height: 1.2em;
+  }
+}
+
+.deletefood {
+  svg {
+    fill: var(--warning-color);
+    width: 1.2em;
+    height: 1.2em;
+  }
+}
+
+.canceledit{
+  
+  svg {
+    fill: var(--warning-color);
+    width: 0.8em;
+    height: 0.8em;
+  }
+}
+
+.nofood {
+  color: var(--secondary-color);
+  text-shadow: 3px 2px 3px var(--accent-color), 0 0 1em var(--base-color), 0 0 0.2em var(--base-color);
+}
